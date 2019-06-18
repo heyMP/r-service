@@ -1,0 +1,10 @@
+version: '2'
+services:
+  r-service:
+    build: .
+    ports:
+      - '3000:3000'
+    command: 'node_modules/.bin/nodemon index.js'
+    volumes:
+      - .:/home/node/
+      - /home/node/node_modules
