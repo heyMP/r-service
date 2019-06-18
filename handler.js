@@ -31,9 +31,15 @@ class Routing {
 
   async handle(req, res) {
     if (req.body && typeof req.body === 'string') {
+      let code = req.body
       fs.writeFileSync('/tmp/code.r', req.body, 'utf8')
       const spawn = cp.spawnSync('r', ['/tmp/code.r']) 
-      res.send(spawn.output.toString())
+      // trim up some of the output
+      let output = spawn.output.toString()
+      output = output.replace(/^,/g, '')
+      output = output.replace(/\n,$/g, '')
+      output = output.trim()
+      res.send(output)
     }
     else {
       res.send(`No code found.`)
