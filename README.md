@@ -8,9 +8,13 @@ Start the docker container that is running the r-service on port 3000
 docker run -p 3000:3000 heymp/r-service
 ```
 
-Add an example R file
+Create an example R file
 ```
 touch example.R
+```
+
+Add some R code to the file
+```
 echo "a <- 2
 b <- 2
 print(a + b)" >> example.R
